@@ -2,13 +2,21 @@
 include_once 'DbController.php';
 
 // select
-$allSelect = $dbconn->getDbResult('toDo', '', '*');
+$todoList = $dbconn->getDbResult('toDo', '', '*');
+
+// filter, map, reduce -> 세 개념은 배열 가공하는데 굉장히 중요한 개념!! 공부하기
 
 // row 갯수 출력
-$rowTotal = $dbconn->getDbRows('toDo', '');
-$rowTodo = $dbconn->getDbRows('toDo', 'success=false');
-$rowDone = $dbconn->getDbRows('toDo', 'success=true');
+$totalCount = count($todoList);
+$doneTodoList = array_filter($todoList, function($todo){
+    return $todo.success;
+});
+$doneTodoCount = count($doneTodoList);
+$notTodoCount = $totalCount-$doneTodoCount;
 
+//$rowTotal = $dbconn->getDbRows('toDo', '');
+//$rowTodo = $dbconn->getDbRows('toDo', 'success=false');
+//$rowDone = $dbconn->getDbRows('toDo', 'success=true');
 ?>
 <html>
 <head>
@@ -25,14 +33,15 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
         <!--        --><?php //if($allSelect) { ?>
         <div class="desc">
             <ul>
-                <li><?= $rowTotal, "개의 할 일 작성<br>"; ?></li>
-                <li><?= $rowTodo, "개 해야함<br>"; ?></li>
-                <li><?= $rowDone, "개 완료함<br>"; ?></li>
+                <li><?= $totalCount, "개의 할 일 작성<br>"; ?></li>
+                <li><?= $notTodoCount, "개 해야함<br>"; ?></li>
+                <li><?= $doneTodoCount, "개 완료함<br>"; ?></li>
             </ul>
         </div>
         <!--        --><?php /*} else {
             echo "실패"."<br>";
             exit();
+            로그로 남기기 ui로 확인하는 건 안 좋음
         } */?>
     </div>
 
@@ -70,7 +79,7 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
                                 db_update.php?check_false=<?php echo $allRow['list_id'] ?>
                           <?php  } else  { ?>
                           <?php  }  ?> ">
-                            <?php if ($allRow['success']==false) {
+                                <?php if ($allRow['success']==false) {
                                     echo '미완료';
                                 } else if($allRow['success']==true) {
                                     echo '완료';

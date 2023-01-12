@@ -52,17 +52,19 @@ class DbController
             $rows = mysqli_fetch_row($result);
             return $rows[0]?$rows[0]:0;
         }
-    }
+    } // 필용 없
 
     function getSqlFilter($sql) {
         return $sql;
-    }
+    } // 의미 없음
 
     function getDbError(){
         return mysqli_error($this->db);
-    }
+    } // 로그로 남기기 ui로 확인하는 건 안 좋음  , 쿼리 뒤에 True 넣으면 결과... , 버전 넣어서 파라미터로 사용하기(질문하기)
 
     // set method
+    // 함수이름 모든 정보 넣기  (유지보수 -> 변수,함수 이름 중요)
+    // ex.f_insert_object (blackcircle 방식)
     function setDbInsert($table, $key, $val) {
         return mysqli_query($this->db, "INSERT INTO {$table} set {$key} = '{$val}' ");
     }
