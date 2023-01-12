@@ -1,0 +1,89 @@
+h1{
+    width: 50%;
+    margin: 30px auto;
+    text-align: center;
+    color: 	#333;
+}
+.desc {
+    width: 80%;
+    margin: 0 auto;
+}
+form {
+    width: 80%;
+    margin: 30px auto;
+    border-radius: 50px;
+    padding: 10px;
+    box-shadow: 3px 3px 10px 5px lightgray;
+}
+form input {
+    width: 90%;
+    border: none;
+}
+form button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: gray;
+    color: #f2f2f2;
+    cursor: pointer;
+}
+form button:hover {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: gainsboro;
+    color: #333;
+}
+table {
+    width: 80%;
+    margin: 30px auto;
+    border-collapse: collapse;
+}
+
+tr {
+    border-bottom: 1px solid #cbcbcb;
+}
+
+th {
+    font-size: 19px;
+}
+
+th, td{
+    text-align: center;
+    border: none;
+    height: 50px;
+    padding: 2px;
+}
+
+tr:hover {
+    background: #E9E9E9;
+}
+
+.delete{
+    text-align: center;
+}
+.delete a{
+    width: 10px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50%;
+    color: white;
+    background: indianred;
+    padding: 1px 6px;
+    text-decoration: none;
+}
+.delete a:hover{
+    width: 10px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50%;
+    color: white;
+    background: darkred;
+    padding: 1px 6px;
+    text-decoration: none;
+}
+#cheBtn {
+    cursor: pointer;
+}

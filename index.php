@@ -1,85 +1,95 @@
 <?php
-$db_host = 'localhost:3307';
-$db_user = 'root';
-$db_password = 'tmakdlf';
-$db_name = 'study';
-$link = mysqli_connect($db_host, $db_user, $db_password, $db_name) or die("MariaDB 접속 실패!!");
-/*if ( mysqli_connect_error($link)) {
-    echo "MariaDB 접속 실패!!", "<br>";
-    echo "오류 원인 : ", mysqli_connect_error();
-    exit();
-}
-echo "MariaDB 접속 성공!!";
-mysqli_close($link);*/
+include_once 'DbController.php';
 
-$sql_add_todo = "
-               INSERT INTO todo(todo_text) VALUES ($add_text);
-    ";
-$sql_delete_todo = "
-               DELETE FROM toDo WHERE todo_text = '간식먹기';
-    ";
-$sql_done = "
-               UPDATE todo 
-                SET
-                 success = TRUE, done_time = NOW() WHERE todo_text = '세차하기';
-    ";
-$sql_do_not = "
-               UPDATE todo 
-                SET
-                 success = FALSE , add_time = NOW() WHERE todo_text = '물 마시기';
-    ";
+// select
+$allSelect = $dbconn->getDbResult('toDo', '', '*');
 
-$sql_select = "
-                SELECT * FROM toDo;
-    ";
-$sql_do_not_select = "
-                SELECT success FROM todo WHERE success=false;
-    ";
-$sql_done_select = "
-                SELECT success FROM todo WHERE success=true;
-    ";
+// row 갯수 출력
+$rowTotal = $dbconn->getDbRows('toDo', '');
+$rowTodo = $dbconn->getDbRows('toDo', 'success=false');
+$rowDone = $dbconn->getDbRows('toDo', 'success=true');
 
-
-
-$ret = mysqli_query($link, $sql_add_todo);
-$ret_tbl = mysqli_query($link, $sql_select);
-$ret_do_not = mysqli_query($link, $sql_do_not_select);
-$ret_done = mysqli_query($link, $sql_done_select);
-
-mysqli_close($link);
 ?>
-
 <html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="index.css">
+    <title>To Do List</title>
+</head>
 <body>
 <div>
-    <h1>TO DO LIST</h1>
     <div>
-        <?php if($ret) { ?>
+        <h1>To Do List</h1>
+        <!--        --><?php //if($insertTodo || $sucTrue || $sucFalse ) { ?>
+        <!--        --><?php //if($insertTodo) { ?>
+        <!--        --><?php //if($allSelect) { ?>
+        <div class="desc">
             <ul>
-                <li><?= mysqli_num_rows($ret_tbl), "개의 할 일 작성<br>"; ?></li>
-                <li><?= mysqli_num_rows($ret_do_not), "개의 할 일이 있음<br>"; ?></li>
-                <li><?= mysqli_num_rows($ret_done), "개의 할 일 완료함<br><br>"; ?></li>
+                <li><?= $rowTotal, "개의 할 일 작성<br>"; ?></li>
+                <li><?= $rowTodo, "개 해야함<br>"; ?></li>
+                <li><?= $rowDone, "개 완료함<br>"; ?></li>
             </ul>
-        <?php } else {
+        </div>
+        <!--        --><?php /*} else {
             echo "실패"."<br>";
-            echo "실패 원인 : ".mysqli_error($link);
             exit();
-        } ?>
+        } */?>
     </div>
 
     <div>
         <div>
-            <form>
+            <form action="db_update.php" method="post">
                 <input type="text" name="add_text" placeholder="할 일을 입력하세요.">
-                <button>추가</button>
+                <button type="submit" name="submit">+</button>
             </form>
         </div>
+    </div>
+    <div>
         <div>
-            <?php
-            while ($row = mysqli_fetch_array($ret_tbl)) {
-                echo " - ", $row['todo_text'], " | ",$row['success'], " | ", $row['add_time'], " | ", $row['done_time'], " | ","<br>";
-            }
-            ?>
+            <table>
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>check</th>
+                    <th>text</th>
+                    <th>success value</th>
+                    <th>add time</th>
+                    <th>done time</th>
+                    <th>delete</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <?php while ($allRow = mysqli_fetch_array($allSelect)) { ?>
+                    <tr>
+                        <td> <?php echo $allRow['list_id']; ?> </td>
+                        <td> <a id="cheBtn" href="
+                            <?php if($allRow['success']==false) { ?>
+                                db_update.php?check_true=<?php echo $allRow['list_id'] ?>
+                          <?php  } else if ($allRow['success']==true) { ?>
+                                db_update.php?check_false=<?php echo $allRow['list_id'] ?>
+                          <?php  } else  { ?>
+                          <?php  }  ?> ">
+                            <?php if ($allRow['success']==false) {
+                                    echo '미완료';
+                                } else if($allRow['success']==true) {
+                                    echo '완료';
+                                } else {
+                                    echo '--';
+                                } ?>
+                            </a>
+                        </td>
+                        <td> <?php echo $allRow['todo_text']; ?> </td>
+                        <td> <?php echo $allRow['success']; ?> </td>
+                        <td> <?php echo $allRow['add_time']; ?> </td>
+                        <td> <?php echo $allRow['done_time']; ?> </td>
+                        <td class="delete">
+                            <a href="db_update.php?del_list=<?php echo $allRow['list_id'] ?>">x</a>
+                        </td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
