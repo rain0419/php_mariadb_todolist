@@ -54,6 +54,14 @@ class DbController
         }
     } // 필용 없
 
+    function db_fetch_array($que)
+    {
+        // @는 PHP에서 수행에 지장이 없는 경고 메시지가 나타나지 않도록 하는 기호
+        // 결과 레코드 집합에서 한 레코드를 가져와 배열을 생성한다.
+        // mysql_fetch_array() 함수가 호출되면 결과 레코드 집합 식별자는 자동으로 다음 레코드로 이동된다
+        return mysqli_fetch_array($que);
+    }
+
     function getSqlFilter($sql) {
         return $sql;
     } // 의미 없음
@@ -75,6 +83,20 @@ class DbController
 
     function setDbDelete($table,$where)    {
         return mysqli_query($this->db,"DELETE FROM ".$table.($where?' where '.$this->getSqlFilter($where):''));
+    }
+
+    function setUpdateSuc($success, $list_id ) {
+        return mysqli_query($this->db, "UPDATE todo SET success={$success} WHERE list_id={$list_id}");
+    }
+
+    // 검색조건에 일치하는 데이터 가져오기
+    function setSearchTodo($search) {
+        return mysqli_query($this->db, "SELECT * FROM todo WHERE todo_text LIKE {$search}");
+    }
+
+    // 예정날짜 받기
+    function setPlanTime($planned_time){
+        return mysqli_query($this->db, "INSERT INTO todo(planned_time) values ({$planned_time});");
     }
 
 } // end dbClass

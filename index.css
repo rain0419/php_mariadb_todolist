@@ -3,6 +3,7 @@ h1{
     margin: 30px auto;
     text-align: center;
     color: 	#333;
+    font-size: 100px;
 }
 .desc {
     width: 80%;
@@ -10,16 +11,18 @@ h1{
 }
 form {
     width: 80%;
+    margin: 0 auto;
+}
+form .add_text {
     margin: 30px auto;
     border-radius: 50px;
     padding: 10px;
     box-shadow: 3px 3px 10px 5px lightgray;
 }
-form input {
+form .add_text input {
     width: 90%;
-    border: none;
 }
-form button {
+form .add_text button {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -28,7 +31,7 @@ form button {
     color: #f2f2f2;
     cursor: pointer;
 }
-form button:hover {
+form .add_text button:hover {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -36,6 +39,33 @@ form button:hover {
     background: gainsboro;
     color: #333;
 }
+form .search {
+    margin: 30px auto;
+    border-bottom: 1px solid #333;
+    padding: 10px;
+}
+form .search input {
+    width: 90%;
+}
+form .search button {
+    width: 50px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: gray;
+    color: #f2f2f2;
+    cursor: pointer;
+}
+form .search button:hover {
+    width: 50px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: gainsboro;
+    color: #333;
+}
+
+/* todo 목록 */
 table {
     width: 80%;
     margin: 30px auto;
