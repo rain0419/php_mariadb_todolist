@@ -1,4 +1,6 @@
-h1{
+
+.title{
+    display: block;
     width: 50%;
     margin: 30px auto;
     text-align: center;
@@ -116,4 +118,10 @@ tr:hover {
 }
 #cheBtn {
     cursor: pointer;
+}
+
+/* 데이트타임피커 */
+.end_dt {
+    width: 140px;
+    padding-left: 10px;
 }

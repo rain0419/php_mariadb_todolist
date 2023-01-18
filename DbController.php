@@ -86,12 +86,82 @@ class DbController
     }
 
     function setUpdateSuc($success, $list_id ) {
-        return mysqli_query($this->db, "UPDATE todo SET success={$success} WHERE list_id={$list_id}");
+        $result = mysqli_query($this->db, "UPDATE todo SET success={$success} WHERE list_id={$list_id}");
+        return $result;
     }
 
     // 검색조건에 일치하는 데이터 가져오기
     function setSearchTodo($search) {
-        return mysqli_query($this->db, "SELECT * FROM todo WHERE todo_text LIKE {$search}");
+        $result =  mysqli_query($this->db, "SELECT * FROM todo WHERE todo_text LIKE '%{$search}%'");
+        return $result;
+    }
+
+    // 검색 구문을 얻는다.
+    function get_sql_search($search_text, $search_operator = 'and')
+    {
+
+
+        $search_text = strip_tags(($search_text));
+        $search_text = trim(stripslashes($search_text));
+
+        if (!$search_text && $search_text !== '0') {
+            if ($search_ca_name) {
+                return $str;
+            } else {
+                return '0';
+            }
+        }
+
+        if ($str)
+            $str .= " and ";
+
+        // 쿼리의 속도를 높이기 위하여 ( ) 는 최소화 한다.
+        $op1 = "";
+
+        // 검색어를 구분자로 나눈다. 여기서는 공백
+        $s = array();
+        $s = explode(" ", $search_text);
+
+        // 검색필드를 구분자로 나눈다. 여기서는 +
+        $tmp = array();
+        $field = explode("||", $tmp[0]);
+        $not_comment = "";
+        if (!empty($tmp[1]))
+            $not_comment = $tmp[1];
+
+        $str .= "(";
+        for ($i = 0; $i < count($s); $i++) {
+            // 검색어
+            $search_str = trim($s[$i]);
+            if ($search_str == "") continue;
+
+            // 인기검색어
+            insert_popular($field, $search_str);
+
+            $str .= $op1;
+            $str .= "(";
+
+            $op2 = "";
+            for ($k = 0; $k < count($field); $k++) { // 필드의 수만큼 다중 필드 검색 가능 (필드1+필드2...)
+
+                // SQL Injection 방지
+                // 필드값에 a-z A-Z 0-9 _ , | 이외의 값이 있다면 검색필드를 wr_subject 로 설정한다.
+                $field[$k] = preg_match("/^[\w\,\|]+$/", $field[$k]) ? strtolower($field[$k]) : "wr_subject";
+
+                $str .= $op2;
+                $str .= "INSTR(LOWER($field[$k]), LOWER('$search_str'))";
+//                $str .= "INSTR($field[$k], '$search_str')";
+                $op2 = " or ";
+            }
+            $str .= ")";
+
+            $op1 = " $search_operator ";
+        }
+        $str .= " ) ";
+        if ($not_comment)
+            $str .= " and wr_is_comment = '0' ";
+
+        return $str;
     }
 
     // 예정날짜 받기

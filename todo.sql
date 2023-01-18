@@ -1,1 +1,10 @@
-DELETE FROM todo WHERE todo_text = 'asdf';
+CREATE TABLE toDo(
+	list_id INT(10) NOT NULL AUTO_INCREMENT,
+	todo_text VARCHAR(100) NOT NULL DEFAULT '할 일을 입력해 주세요',
+	success BOOLEAN NOT NULL DEFAULT false,
+	add_time DATETIME NOT NULL DEFAULT NOW(),
+	done_time DATETIME NOT NULL DEFAULT NOW(),
+	planned_time DATETIME;
+	memo VARCHAR(100);
+	PRIMARY KEY(list_id)
+);
