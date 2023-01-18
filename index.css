@@ -1,4 +1,6 @@
-
+.hidden {
+    display: none;
+}
 .title{
     display: block;
     width: 50%;

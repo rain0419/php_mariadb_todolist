@@ -69,18 +69,20 @@ if (isset($_GET['memo'])){
 }
 
 
-if (isset($_GET['planned_time']) ){
-    $list_id = $_GET['planned_time'];
-    if (isset($_GET['end_dt']) ){
-        $to_date_time = $_GET['end_dt'];
-        $planDateUpdate = $dbconn->setDbUpdate('toDo','planned_time='.$to_date_time, 'list_id='.$list_id);
-    }
-//    var_dump($to_date_time);
-//    var_dump($planDateUpdate);
+/*if ( isset($_GET['list_id'])) {
+    print('dd');
+    $date_list_id = $_GET['list_id'];
+    var_dump($date_list_id);
+}*/
 
+if ( isset($_GET['end_dt']) ){
+    $to_date_time = $_GET['end_dt'];
+//    var_dump($to_date_time);
+    $planDateUpdate = $dbconn->setDbUpdate('toDo','planned_time="'.$to_date_time.'"', 'list_id=17');
+//    $planDateUpdate = $dbconn->setDbUpdate('toDo','planned_time ='.$to_date_time, 'list_id='.$list_id);
+//    var_dump($planDateUpdate);
     header('location: index.php');
 }
-
 
 
 

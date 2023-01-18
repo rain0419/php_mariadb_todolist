@@ -26,8 +26,10 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <title>To Do List</title>
 </head>
 <body>
@@ -81,7 +83,11 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
                     <tbody>
                         <?php while ($allRow = mysqli_fetch_array($allSelect)) { ?>
                             <tr>
-                                <td> <?php echo $allRow['list_id']; ?> </td>
+                                <td>
+
+                                    <?php echo $allRow['list_id']; ?>
+
+                                </td>
                                 <td> <a id="cheBtn" href="
                             <?php if($allRow['success']==false) { ?>
                                 todo_update.php?check_true=<?php echo $allRow['list_id'] ?>
@@ -99,12 +105,9 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
                                 <td> <?php echo $allRow['done_time']; ?> </td>
                                 <td> <?php echo $allRow['planned_time']; ?><br>
                                     <form action="todo_update.php">
-<!--                                        시작일시 : <input type='text' class='datetimepicker' name='start_dt'  style='width:140px;'>,-->
+<!--                                        <input class="hidden" name="list_id=--><?php //echo $allRow['list_id'] ?><!--">-->
                                         종료일시 : <input type='text' class='datetimepicker end_dt' name='end_dt'>
-                                        <button type="submit" name="submit">
-                                        <a href="todo_update.php?planned_time=<?php echo $allRow['list_id'] ?>">
-                                                설정
-                                        </a>
+                                        <button type="submit" name="submit">확인d
                                         </button>
                                     </form>
                                 </td>
