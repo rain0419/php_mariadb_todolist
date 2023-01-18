@@ -1,94 +1,130 @@
 <?php
 include_once 'DbController.php';
+// search 변수
+$search_text = $_GET['search'];
+$is_search = $dbconn->setSearchTodo($search_text);
 ?>
 <html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-    <link rel="stylesheet" href="./index.css">
-    <title>검색 페이지</title>
-</head>
-<body>
-<div>
-<?php
-//search 변수
-    $search_text = $_GET['search'];
-    $is_search = $dbconn->setSearchTodo($search_text);
-?>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+        <!--    <link rel="stylesheet" href="./index.css">-->
+        <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <title>To Do List</title>
+    </head>
+    <body>
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                    <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
+                        <div class="card-body py-4 px-4 px-md-5">
+                            <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">To Do List</p>
+                            <ul>
+                                <li><?= $rowTotal, "개의 할 일 작성<br>"; ?></li>
+                                <li><?= $rowTodo, "개 해야함<br>"; ?></li>
+                                <li><?= $rowDone, "개 완료함<br>"; ?></li>
+                            </ul>
 
-    <div>
-        <a class="title" href="index.php">홈으로</a>
-        <div class="desc">
-            <ul>
-                <li><?= $search_text, " 로 검색한 결과<br>"; ?></li>
-            </ul>
-        </div>
+                            <div class="pb-2">
 
-    </div>
-    <div>
-        <div>
-            <div>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>check</th>
-                        <th>text</th>
-                        <th>success value</th>
-                        <th>add time</th>
-                        <th>done time</th>
-                        <th>완료예정 날짜/시간</th>
-                        <th>memo</th>
-                        <th>delete</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    <?php while ($searchRow = mysqli_fetch_array($is_search)) { ?>
-                        <tr>
-                            <td> <?php echo $searchRow['list_id']; ?> </td>
-                            <td> <a id="cheBtn" href="
-                            <?php if($searchRow['success']==false) { ?>
-                                todo_update.php?check_true=<?php echo $searchRow['list_id'] ?>
-                          <?php  } else if ($searchRow['success']==true) { ?>
-                                todo_update.php?check_false=<?php echo $searchRow['list_id'] ?>
-                          <?php  } else  { ?>
-                          <?php  }  ?>
-                                ">
-                                    <?php echo ($searchRow['success'] ? '완료' : '미완료' )?>
-                                </a>
-                            </td>
-                            <td> <a href="todo_update.php?memo=<?php echo $searchRow['list_id'] ?>"><?php echo $searchRow['todo_text']; ?> </a></td>
-                            <td> <?php echo $searchRow['success']; ?> </td>
-                            <td> <?php echo $searchRow['add_time']; ?> </td>
-                            <td> <?php echo $searchRow['done_time']; ?> </td>
-                            <td> <?php echo $searchRow['planned_time']; ?><br>
-                                <form action="todo_update.php">
-                                    <input type="text" name="to_date" id="to_date" placeholder="YYYY-MM-DD hh:mm:ss 형식으로 입력해주세요.">
-                                </form>
-                                <a href="todo_update.php?to_date=<?php echo $searchRow['list_id'] ?>">설정</button>
-                            </td>
-                            <td> <?php echo $searchRow['memo']; ?> </td>
-                            <td class="delete">
-                                <a href="todo_update.php?del_list=<?php echo $searchRow['list_id'] ?>">x</a>
-                            </td>
-                            <!--<td>
-                                <div class="">
-                                    <input type="text" name="to_date" id="to_date" value="2023-01-20 11:00:00" readonly="readonly">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form action="todo_update.php" method="post" class="d-flex flex-row align-items-center">
+                                            <input type="text" class="form-control form-control-lg me-3" id="exampleFormControlInput1" name="add_text" placeholder="할 일을 입력하세요.">
+                                            <button type="submit" name="submit" class="btn btn-primary">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                            </td>-->
-                        </tr>
-                    <?php } ?>
-                    </tbody>
-                </table>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
+                                <p class="small mb-0 ms-4 me-2 text-muted">Search</p>
+                                <form action="search_list.php" method="get">
+                                    <input class="bg-light border-light rounded-pill form-control-sm" type="text" name="search" placeholder="검색하세요" required>
+                                    <button type="submit" name="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
+                                </form>
+                            </div>
+
+   
+                            <?php while ($searchRow = mysqli_fetch_array($is_search)) { ?>
+                                <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
+                                    <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+                                        <div class="form-check">
+
+                                            <a id="cheBtn" href="
+                                                <?php if($searchRow['success']==false) { ?>
+                                                    todo_update.php?check_true=<?php echo $searchRow['list_id'] ?>
+                                              <?php  } else if ($searchRow['success']==true) { ?>
+                                                    todo_update.php?check_false=<?php echo $searchRow['list_id'] ?>
+                                              <?php  } else  { ?>
+                                              <?php  }  ?>
+                                                    ">
+                                                <input
+                                                        class="form-check-input me-0"
+                                                        type="checkbox"
+                                                        value=""
+                                                        id="flexCheckChecked1"
+                                                        aria-label="..."
+                                                        checked=
+                                                />
+                                                <?php echo ($searchRow['success'] ? '완료' : '미완료' )?>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+                                        <p class="lead fw-normal mb-0">
+                                            <?php echo $searchRow['list_id']; ?>
+                                            <?php echo $searchRow['todo_text']; ?>
+                                            [<?php echo $searchRow['success']; ?>]
+                                        </p>
+                                    </li>
+                                    <!--                            예상 날짜 입력란 -->
+                                    <li class="list-group-item px-3 py-1 d-flex align-items-center border-0 bg-transparent">
+                                        <div class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-light">
+                                            <p class="small mb-0">
+                                            <form class="d-grid gap-2 d-md-flex justify-content-md-end" action="todo_update.php">
+                                                <input type='text' class='datetimepicker end_dt form-control-sm' name='end_dt'>
+                                                <button class="btn btn-warning inline" type="submit" name="submit"><i class="fas fa-calendar-check" style="color: #fff"></i></button>
+                                            </form>
+                                            <!--                                        </a>-->
+                                            <p class=" ms-3"><?php echo $searchRow['planned_time']; ?></p>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!--                            편집, 삭제, 날짜시간 출력 -->
+                                    <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
+                                        <div class="d-flex flex-row justify-content-end mb-1">
+                                            <a href="todo_update.php?memo=<?php echo $searchRow['list_id'] ?>" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
+                                            <!--                                    <a href="todo_update.php?memo=--><?php //echo $searchRow['list_id'] ?><!--">--><?php //echo $searchRow['todo_text']; ?><!-- </a>-->
+                                            <!--                                    <a href="todo_update.php?del_list=--><?php //echo $searchRow['list_id'] ?><!--" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a>-->
+                                            <a href="todo_update.php?del_list=<?php echo $searchRow['list_id'] ?>" class="text-danger"title="Delete todo"><i class="fas fa-trash-alt"></i></a>
+                                        </div>
+                                        <div class="text-end text-muted">
+                                            <!--                                    <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">-->
+                                            <p class="small mb-0"><i class="fas fa-info-circle"></i>
+                                                Add <?php echo $searchRow['add_time']; ?>
+                                                / Done <?php echo $searchRow['done_time']; ?></p>
+                                            <!--                                    </a>-->
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-
-
-
-
-</div>
+    </section>
 </body>
 </html>

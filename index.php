@@ -48,6 +48,7 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
                         </ul>
 
                         <div class="pb-2">
+
                             <div class="card">
                                 <div class="card-body">
                                     <form action="todo_update.php" method="post" class="d-flex flex-row align-items-center">
@@ -107,9 +108,7 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
                             <li class="list-group-item px-3 py-1 d-flex align-items-center border-0 bg-transparent">
                                 <div class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-light">
                                     <p class="small mb-0">
-<!--                                        <a href="#!" data-mdb-toggle="tooltip" title="Due on date">-->
                                         <form class="d-grid gap-2 d-md-flex justify-content-md-end" action="todo_update.php">
-<!--                                                <i class="fas fa-calendar-alt me-2 text-warning"></i>-->
                                                 <input type='text' class='datetimepicker end_dt form-control-sm' name='end_dt'>
                                                 <button class="btn btn-warning inline" type="submit" name="submit"><i class="fas fa-calendar-check" style="color: #fff"></i></button>
                                         </form>
@@ -123,7 +122,8 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
                                 <div class="d-flex flex-row justify-content-end mb-1">
                                     <a href="todo_update.php?memo=<?php echo $allRow['list_id'] ?>" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
 <!--                                    <a href="todo_update.php?memo=--><?php //echo $allRow['list_id'] ?><!--">--><?php //echo $allRow['todo_text']; ?><!-- </a>-->
-                                    <a href="todo_update.php?del_list=<?php echo $allRow['list_id'] ?>" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a>
+<!--                                    <a href="todo_update.php?del_list=--><?php //echo $allRow['list_id'] ?><!--" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a>-->
+                                    <a href="todo_update.php?del_list=<?php echo $allRow['list_id'] ?>" class="text-danger"title="Delete todo"><i class="fas fa-trash-alt"></i></a>
                                 </div>
                                 <div class="text-end text-muted">
 <!--                                    <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">-->
