@@ -47,8 +47,7 @@ if (isset($_GET['check_true'])) {
 
     // 쿼리 한 줄로 수정(효율성)
     // 토글로 반전값 써줘서 하나로 합치기 (index.php의 If 절도 포함해서 총 4개 줄 -> 한 줄로 수정하기)
-    $done_check = $dbconn->setDbUpdate('toDo','success=1', 'list_id='.$list_id);
-    $done_time = $dbconn->setDbUpdate('toDo','done_time=NOW()', 'list_id='.$list_id);
+    $done_check = $dbconn->setDbUpdate('toDo','success=1, done_time=NOW()', 'list_id='.$list_id);
     header('location: index.php');
 
 }
@@ -58,14 +57,14 @@ if (isset($_GET['check'])) {
     $list_id = $_GET['check'];
     $sucRes = ($dbconn->getDbResult('todo', 'list_id='.$list_id, 'success'));
     $sucVal = mysqli_fetch_row($sucRes);
-    var_dump($sucVal);
-    //array(1) { [0]=> string(1) "1" }
+    $sucTog = ($sucVal[0]=='0') ? true : false;
+    var_dump($sucTog);
+    $sucUpdate = $dbconn->setDbUpdate('todo', 'success='.$sucTog.', done_time=NOW()', 'list_id='.$list_id);
+    var_dump($sucUpdate);
+//    print($sucUpdate);
 
+//    header('location: index.php');
 
-
-//    $sucTog = ($sucFal ? !$sucFal: $sucFal);
-//    var_dump($success);
-//    $done_check = $dbconn->setUpdateSuc($sucTog, $list_id);
 
 }
 
@@ -77,11 +76,28 @@ if ( isset($_GET['end_dt']) ){
     if (isset($_GET['list_id'])) {
         $date_list_id = $_GET['list_id'];
         $planDateUpdate = $dbconn->setPlanTime($to_date_time, $date_list_id);
-//    $planDateUpdate = $dbconn->setDbUpdate('toDo','planned_time="'.$to_date_time.'"', 'list_id='.$date_list_id);
         header('location: index.php');
     }
 }
 
+
+// 메모 및 편집
+
+
+
+if ( isset($_POST['todo_text'])) {
+        $text = $_POST['todo_text'];
+        print('됨');
+//if ( isset($_POST['edit_todolist_id'])) {
+    $list_id = $_POST['edit_todolist_id'];
+        var_dump($list_id);
+//        if (isset($_POST['todo_memo'])) {
+            $memo = $_POST['todo_memo'];
+            $edit_update =  $dbconn->setDbUpdate('todo', 'todo_text="'.$text.'", memo="'.$memo.'"', 'list_id='.$list_id );
+            header('location: index.php');
+//        }
+//    }
+}
 
 
 

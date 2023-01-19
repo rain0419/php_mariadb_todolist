@@ -19,6 +19,7 @@ $allSelect = $dbconn->getDbResult('toDo', '', '*');
 $rowTotal = $dbconn->getDbRows('toDo', '');
 $rowTodo = $dbconn->getDbRows('toDo', 'success=false');
 $rowDone = $dbconn->getDbRows('toDo', 'success=true');
+
 ?>
 <html>
 <head>
@@ -76,19 +77,12 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
                         <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
                             <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
                                 <div class="form-check">
-
-                                    <a id="cheBtn" href="
-                                            todo_update.php?check=<?php echo $allRow['list_id'] ?>
-                                            ">
-                                        <input
-                                                class="form-check-input me-0"
-                                                type="checkbox"
-                                                value=""
-                                                id="flexCheckChecked1"
-                                                aria-label="..."
-                                                checked=
-                                        />
-                                        <?php echo ($allRow['success'] ? '완료' : '미완료' )?>
+                                    <a id="cheBtn" href="todo_update.php?check=<?php echo $allRow['list_id'] ?>">
+                                        <?php if ($allRow['success']) { ?>
+                                            <i class="fas fa-check-square"></i>
+                                        <?php } else { ?>
+                                            <i class="far fa-square"></i>
+                                        <?php } ?>
                                     </a>
                                 </div>
                             </li>
@@ -96,7 +90,8 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
                                 <p class="lead fw-normal mb-0">
                                     <?php echo $allRow['list_id']; ?>
                                     <?php echo $allRow['todo_text']; ?>
-                                    [<?php echo $allRow['success']; ?>]
+                                    [<?php echo $allRow['memo']; ?>]
+                                    <p class=" ms-3">예상 완료 날짜 : <?php echo $allRow['planned_time'] ?></p>
                                 </p>
                             </li>
 <!--                            예상 날짜 입력란 -->
@@ -104,21 +99,31 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
                                 <div class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-light">
                                     <p class="small mb-0">
                                         <form class="d-grid gap-2 d-md-flex justify-content-md-end" action="todo_update.php">
-                                                <input type='text' class='.d-none' name='list_id' value='<?php echo $allRow['list_id'] ?>'>
+                                                <input type='text' class='d-none' name='list_id' value='<?php echo $allRow['list_id'] ?>'>
                                                 <input type='text' class='datetimepicker end_dt form-control-sm' name='end_dt'>
                                                 <button class="btn btn-warning inline" type="submit" name="submit"><i class="fas fa-calendar-check" style="color: #fff"></i></button>
                                         </form>
 <!--                                        </a>-->
-                                        <p class=" ms-3"><?php echo $allRow['planned_time']; ?></p>
+<?php
+
+$now = date('YY-MM-DD hh-mm-ss');
+$planTime = $allRow['planned_time'];
+$intPlanTime = date("YY-MM-DD hh-mm-ss", strtotime($planTime));
+?>
+                                        <?php if ( $intPlanTime < $now) { ?>
+                                        <p>날짜 지남</p>
+                                        <?php } else { echo '<p>엘스다 엘스</p>'; } ?>
                                     </p>
                                 </div>
                             </li>
-<!--                            편집, 삭제, 날짜시간 출력 -->
+<!--                            메모 및 편집, 삭제, 날짜시간 출력 -->
                             <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
                                 <div class="d-flex flex-row justify-content-end mb-1">
-                                    <a href="todo_update.php?memo=<?php echo $allRow['list_id'] ?>" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
-<!--                                    <a href="todo_update.php?memo=--><?php //echo $allRow['list_id'] ?><!--">--><?php //echo $allRow['todo_text']; ?><!-- </a>-->
-<!--                                    <a href="todo_update.php?del_list=--><?php //echo $allRow['list_id'] ?><!--" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a>-->
+                                    <?php if ($allRow['success']) { ?>
+                                    <p class="text-info" title="Edit todo"><i class="fas fa-pencil-alt me-3" style="color: lightgrey;"></i></p>
+                                    <?php } else { ?>
+                                    <a href="todo_edit_page.php?edit_list=<?php echo $allRow['list_id'] ?>" class="text-info" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
+                                    <?php } ?>
                                     <a href="todo_update.php?del_list=<?php echo $allRow['list_id'] ?>" class="text-danger"title="Delete todo"><i class="fas fa-trash-alt"></i></a>
                                 </div>
                                 <div class="text-end text-muted">

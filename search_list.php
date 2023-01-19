@@ -24,7 +24,7 @@ $is_search = $dbconn->setSearchTodo($search_text);
                 <div class="col">
                     <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
                         <div class="card-body py-4 px-4 px-md-5">
-                            <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">To Do List</p>
+                            <a href="index.php" class="h1 text-center mt-3 mb-4 pb-3 text-primary">To Do List</a>
                             <ul>
                                 <li><?= $rowTotal, "개의 할 일 작성<br>"; ?></li>
                                 <li><?= $rowTodo, "개 해야함<br>"; ?></li>
