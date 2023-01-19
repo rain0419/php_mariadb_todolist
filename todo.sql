@@ -4,7 +4,7 @@ CREATE TABLE toDo(
 	success BOOLEAN NOT NULL DEFAULT false,
 	add_time DATETIME NOT NULL DEFAULT NOW(),
 	done_time DATETIME NOT NULL DEFAULT NOW(),
-	planned_time DATETIME;
-	memo VARCHAR(100);
+	planned_time DATETIME,
+	memo VARCHAR(100),
 	PRIMARY KEY(list_id)
 );

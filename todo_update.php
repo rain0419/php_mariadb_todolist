@@ -53,35 +53,33 @@ if (isset($_GET['check_true'])) {
 
 }
 
-// update check false
-if (isset($_GET['check_false'])) {
-    $list_id = $_GET['check_false'];
-//    var_dump($list_id);
-    $do_check = $dbconn->setDbUpdate('toDo','success=0', 'list_id='.$list_id);
+// success check -> object 로 뜸 (success 의 boolean 값 출력) -> int 로 뜸 boolean 값으로 변경
+if (isset($_GET['check'])) {
+    $list_id = $_GET['check'];
+    $sucRes = ($dbconn->getDbResult('todo', 'list_id='.$list_id, 'success'));
+    $sucVal = mysqli_fetch_row($sucRes);
+    var_dump($sucVal);
+    //array(1) { [0]=> string(1) "1" }
 
-    header('location: index.php');
+
+
+//    $sucTog = ($sucFal ? !$sucFal: $sucFal);
+//    var_dump($success);
+//    $done_check = $dbconn->setUpdateSuc($sucTog, $list_id);
+
 }
 
 
-if (isset($_GET['memo'])){
-    $list_id = $_GET['memo'];
-    $is_memo = $dbconn->getDbResult('todo', '');
-}
-
-
-/*if ( isset($_GET['list_id'])) {
-    print('dd');
-    $date_list_id = $_GET['list_id'];
-    var_dump($date_list_id);
-}*/
 
 if ( isset($_GET['end_dt']) ){
     $to_date_time = $_GET['end_dt'];
-//    var_dump($to_date_time);
-    $planDateUpdate = $dbconn->setDbUpdate('toDo','planned_time="'.$to_date_time.'"', 'list_id=17');
-//    $planDateUpdate = $dbconn->setDbUpdate('toDo','planned_time ='.$to_date_time, 'list_id='.$list_id);
-//    var_dump($planDateUpdate);
-    header('location: index.php');
+    var_dump($to_date_time);
+    if (isset($_GET['list_id'])) {
+        $date_list_id = $_GET['list_id'];
+        $planDateUpdate = $dbconn->setPlanTime($to_date_time, $date_list_id);
+//    $planDateUpdate = $dbconn->setDbUpdate('toDo','planned_time="'.$to_date_time.'"', 'list_id='.$date_list_id);
+        header('location: index.php');
+    }
 }
 
 

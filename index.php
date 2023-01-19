@@ -34,9 +34,9 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
     <title>To Do List</title>
 </head>
 <body>
-<section class="vh-100">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+<!--<section class="vh-100">-->
+    <div class="container py-5">
+        <div class="row d-flex">
             <div class="col">
                 <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
                     <div class="card-body py-4 px-4 px-md-5">
@@ -78,12 +78,7 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
                                 <div class="form-check">
 
                                     <a id="cheBtn" href="
-                                        <?php if($allRow['success']==false) { ?>
-                                            todo_update.php?check_true=<?php echo $allRow['list_id'] ?>
-                                      <?php  } else if ($allRow['success']==true) { ?>
-                                            todo_update.php?check_false=<?php echo $allRow['list_id'] ?>
-                                      <?php  } else  { ?>
-                                      <?php  }  ?>
+                                            todo_update.php?check=<?php echo $allRow['list_id'] ?>
                                             ">
                                         <input
                                                 class="form-check-input me-0"
@@ -109,6 +104,7 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
                                 <div class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-light">
                                     <p class="small mb-0">
                                         <form class="d-grid gap-2 d-md-flex justify-content-md-end" action="todo_update.php">
+                                                <input type='text' class='.d-none' name='list_id' value='<?php echo $allRow['list_id'] ?>'>
                                                 <input type='text' class='datetimepicker end_dt form-control-sm' name='end_dt'>
                                                 <button class="btn btn-warning inline" type="submit" name="submit"><i class="fas fa-calendar-check" style="color: #fff"></i></button>
                                         </form>
