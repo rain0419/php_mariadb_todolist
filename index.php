@@ -19,7 +19,6 @@ $allSelect = $dbconn->getDbResult('toDo', '', '*');
 $rowTotal = $dbconn->getDbRows('toDo', '');
 $rowTodo = $dbconn->getDbRows('toDo', 'success=false');
 $rowDone = $dbconn->getDbRows('toDo', 'success=true');
-
 ?>
 <html>
 <head>
@@ -75,8 +74,9 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
 
                         <?php while ($allRow = mysqli_fetch_array($allSelect)) { ?>
                         <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
+<!--                            <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">-->
                             <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                                <div class="form-check">
+                                <div class="d-flex align-items-center form-check">
                                     <a id="cheBtn" href="todo_update.php?check=<?php echo $allRow['list_id'] ?>">
                                         <?php if ($allRow['success']) { ?>
                                             <i class="fas fa-check-square"></i>
@@ -87,46 +87,52 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
                                 </div>
                             </li>
                             <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                                <p class="lead fw-normal mb-0">
-                                    <?php echo $allRow['list_id']; ?>
-                                    <?php echo $allRow['todo_text']; ?>
-                                    [<?php echo $allRow['memo']; ?>]
-                                    <p class=" ms-3">예상 완료 날짜 : <?php echo $allRow['planned_time'] ?></p>
-                                </p>
+                                <div class="d-flex flex-column">
+                                    <div class="d-flex flex-row justify-content-start mb-1">
+                                        <p class="lead fw-normal mb-0">
+                                            <?php echo $allRow['list_id']; ?>
+                                            <?php echo $allRow['todo_text']; ?>
+                                        </p>
+                                    </div>
+                                    <div class="text-start text-muted">
+                                        <p class="small mb-0">
+                                            <?php echo $allRow['memo']; ?>
+                                        </p>
+                                    </div>
+                                </div>
                             </li>
 <!--                            예상 날짜 입력란 -->
-                            <li class="list-group-item px-3 py-1 d-flex align-items-center border-0 bg-transparent">
-                                <div class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-light">
+                            <li class="list-group-item d-flex align-items-center border-0 bg-transparent">
+                                <div class="d-flex align-items-center">
+                                    <?php $now = date('YY-MM-DD hh-mm-ss');
+                                    $planTime = $allRow['planned_time'];
+                                    $intPlanTime = date("YY-MM-DD hh-mm-ss", strtotime($planTime)); ?>
+                                    <?php if ( $intPlanTime < $now) { ?>
+                                        <del class="fs-6 text text-black-50 me-3">날짜가 지났어요 : <?php echo $allRow['planned_time'] ?></del>
+                                    <?php } else { ?>
+                                        <p class="me-3">예상 완료 날짜 : <?php echo $allRow['planned_time'] ?></p>
+                                    <?php } ?>
                                     <p class="small mb-0">
                                         <form class="d-grid gap-2 d-md-flex justify-content-md-end" action="todo_update.php">
                                                 <input type='text' class='d-none' name='list_id' value='<?php echo $allRow['list_id'] ?>'>
-                                                <input type='text' class='datetimepicker end_dt form-control-sm' name='end_dt'>
-                                                <button class="btn btn-warning inline" type="submit" name="submit"><i class="fas fa-calendar-check" style="color: #fff"></i></button>
+                                                <input type='text' class='bg-light border-light datetimepicker end_dt form-control-sm' name='end_dt' style="width: 140px;">
+                                                <button class="btn btn-warning inline" type="submit" name="submit"><i class="text-white fas fa-calendar-check"></i></button>
                                         </form>
 <!--                                        </a>-->
-<?php
-
-$now = date('YY-MM-DD hh-mm-ss');
-$planTime = $allRow['planned_time'];
-$intPlanTime = date("YY-MM-DD hh-mm-ss", strtotime($planTime));
-?>
-                                        <?php if ( $intPlanTime < $now) { ?>
-                                        <p>날짜 지남</p>
-                                        <?php } else { echo '<p>엘스다 엘스</p>'; } ?>
                                     </p>
                                 </div>
                             </li>
 <!--                            메모 및 편집, 삭제, 날짜시간 출력 -->
                             <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
-                                <div class="d-flex flex-row justify-content-end mb-1">
+                                <div class="d-flex flex-row justify-content-end">
                                     <?php if ($allRow['success']) { ?>
-                                    <p class="text-info" title="Edit todo"><i class="fas fa-pencil-alt me-3" style="color: lightgrey;"></i></p>
+                                    <p class="text-info" title="Edit todo"><i class="text-body-tertiary fas fa-pencil-alt me-3"></i></p>
                                     <?php } else { ?>
                                     <a href="todo_edit_page.php?edit_list=<?php echo $allRow['list_id'] ?>" class="text-info" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
                                     <?php } ?>
                                     <a href="todo_update.php?del_list=<?php echo $allRow['list_id'] ?>" class="text-danger"title="Delete todo"><i class="fas fa-trash-alt"></i></a>
                                 </div>
-                                <div class="text-end text-muted">
+                                <div class="text-end text-muted ">
 <!--                                    <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">-->
                                         <p class="small mb-0"><i class="fas fa-info-circle"></i>
                                             Add <?php echo $allRow['add_time']; ?>
