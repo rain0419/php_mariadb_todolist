@@ -104,13 +104,21 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
 <!--                            예상 날짜 입력란 -->
                             <li class="list-group-item d-flex align-items-center border-0 bg-transparent">
                                 <div class="d-flex align-items-center">
-                                    <?php $now = date('YY-MM-DD hh-mm-ss');
+                                    <?php $now = date('Y-m-d H:i:s');
                                     $planTime = $allRow['planned_time'];
-                                    $intPlanTime = date("YY-MM-DD hh-mm-ss", strtotime($planTime)); ?>
-                                    <?php if ( $intPlanTime < $now) { ?>
-                                        <del class="fs-6 text text-black-50 me-3">날짜가 지났어요 : <?php echo $allRow['planned_time'] ?></del>
-                                    <?php } else { ?>
+                                    $strNow = strtotime($now);
+                                    $strPlanTime = strtotime($planTime);
+//                                    var_dump($strNow);
+//                                    var_dump($strPlanTime);
+//                                  strtotime() - 주어진 날짜 형식의 문자열을 1970년 1월 1일 0시 부서 시작하는 유닉스 타임스탬프로 변환
+//                                  UNIX time - 1970년 1월 1일 00:00:00 로부터 현재까지의 누적된 초(seconds) 값
+                                    ?>
+                                    <?php if ( 1 < $strPlanTime && $strPlanTime <= $strNow) { ?>
+                                        <del class="fs-6 text text-black-50 me-3">날짜가 지났습니다 : <?php echo $allRow['planned_time'] ?></del>
+                                    <?php } else if ($strNow < $strPlanTime) { ?>
                                         <p class="me-3">예상 완료 날짜 : <?php echo $allRow['planned_time'] ?></p>
+                                    <?php } else { ?>
+                                        <p></p>
                                     <?php } ?>
                                     <p class="small mb-0">
                                         <form class="d-grid gap-2 d-md-flex justify-content-md-end" action="todo_update.php">
