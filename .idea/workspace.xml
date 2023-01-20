@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91b8bedb-26da-4afd-b1c5-29de44834ff1" name="Default" comment="">
+    <list default="true" id="91b8bedb-26da-4afd-b1c5-29de44834ff1" name="Default" comment="Feature 2 - 검색 페이지 css">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo_update.php" beforeDir="false" afterPath="$PROJECT_DIR$/todo_update.php" afterDir="false" />
     </list>
@@ -15,16 +14,34 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4328125">
+    <splitter split-orientation="horizontal" split-proportion="0.5109375">
       <split-first>
-        <splitter split-orientation="vertical" split-proportion="0.40851063">
+        <splitter split-orientation="vertical" split-proportion="0.46276596">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/index.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="57">
-                      <caret line="36" column="20" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="20" />
+                    <state relative-caret-position="242">
+                      <caret line="150" column="33" lean-forward="true" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="33" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="date.php" pinned="false" current-in-tab="false">
+                <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date.php">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="380">
+                      <caret line="20" column="18" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="18" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="date_c.php" pinned="false" current-in-tab="false">
+                <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="6080">
+                      <caret line="320" column="20" selection-start-line="320" selection-start-column="20" selection-end-line="320" selection-end-column="20" />
                     </state>
                   </provider>
                 </entry>
@@ -54,8 +71,8 @@
               <file leaf-file-name="todo_update.php" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/todo_update.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="150">
-                      <caret line="73" column="37" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="37" />
+                    <state relative-caret-position="293">
+                      <caret line="66" column="81" selection-start-line="66" selection-start-column="81" selection-end-line="66" selection-end-column="81" />
                     </state>
                   </provider>
                 </entry>
@@ -66,20 +83,29 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="index.css" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/index.css">
+          <file leaf-file-name="todo_edit_page.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/todo_edit_page.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="228">
-                  <caret line="12" column="15" lean-forward="true" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+                <state relative-caret-position="399">
+                  <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="search_list.php" pinned="false" current-in-tab="false">
+          <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/index.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2033">
+                  <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="search_list.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/search_list.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="551">
-                  <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+                <state relative-caret-position="304">
+                  <caret line="16" column="119" lean-forward="true" selection-start-line="16" selection-start-column="119" selection-end-line="16" selection-end-column="119" />
                 </state>
               </provider>
             </entry>
@@ -87,8 +113,8 @@
           <file leaf-file-name="DbController.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/DbController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="80" column="60" lean-forward="true" selection-start-line="80" selection-start-column="60" selection-end-line="80" selection-end-column="60" />
+                <state relative-caret-position="1862">
+                  <caret line="103" column="5" lean-forward="true" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
                 </state>
               </provider>
             </entry>
@@ -106,7 +132,18 @@
       <find>delete</find>
       <find>del_list</find>
       <find>datetimepicker</find>
+      <find>search</find>
+      <find>control</find>
+      <find>allRow</find>
+      <find>SELECT</find>
+      <find>color</find>
+      <find>text</find>
+      <find>width</find>
+      <find>add</find>
     </findStrings>
+    <replaceStrings>
+      <replace>searchRow</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -129,15 +166,17 @@
         <option value="$PROJECT_DIR$/TodoController.php" />
         <option value="$PROJECT_DIR$/db_update.php" />
         <option value="$PROJECT_DIR$/todo_list.php" />
-        <option value="$PROJECT_DIR$/search_list.php" />
         <option value="$PROJECT_DIR$/jquery.datetimepicker.css" />
         <option value="$PROJECT_DIR$/build/jquery.datetimepicker.full.min.js" />
         <option value="$PROJECT_DIR$/jquery.js" />
         <option value="$PROJECT_DIR$/planned_date.php" />
         <option value="$PROJECT_DIR$/index.css" />
         <option value="$PROJECT_DIR$/DbController.php" />
-        <option value="$PROJECT_DIR$/todo_update.php" />
+        <option value="$PROJECT_DIR$/todo_edit._page.php" />
+        <option value="$PROJECT_DIR$/todo_edit_page.php" />
+        <option value="$PROJECT_DIR$/search_list.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/todo_update.php" />
       </list>
     </option>
   </component>
@@ -153,8 +192,9 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1920" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -169,11 +209,6 @@
             <path>
               <item name="mariadb_todo" type="b2602c69:ProjectViewProjectNode" />
               <item name="mariadb_todo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mariadb_todo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mariadb_todo" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -231,7 +266,26 @@
       <workItem from="1674054935038" duration="1781000" />
       <workItem from="1674056746297" duration="1781000" />
       <workItem from="1674058558666" duration="1779000" />
-      <workItem from="1674060369567" duration="112000" />
+      <workItem from="1674060369567" duration="1779000" />
+      <workItem from="1674062177609" duration="1780000" />
+      <workItem from="1674063989356" duration="1780000" />
+      <workItem from="1674065806111" duration="1779000" />
+      <workItem from="1674067621447" duration="1672000" />
+      <workItem from="1674092874514" duration="1764000" />
+      <workItem from="1674094669262" duration="1782000" />
+      <workItem from="1674096480192" duration="788000" />
+      <workItem from="1674102393329" duration="1786000" />
+      <workItem from="1674104209311" duration="23000" />
+      <workItem from="1674104241471" duration="1749000" />
+      <workItem from="1674106018774" duration="1782000" />
+      <workItem from="1674107836490" duration="1781000" />
+      <workItem from="1674109646722" duration="1781000" />
+      <workItem from="1674111463516" duration="1782000" />
+      <workItem from="1674113275611" duration="1847000" />
+      <workItem from="1674115381230" duration="1749000" />
+      <workItem from="1674182098818" duration="1228000" />
+      <workItem from="1674195727224" duration="1784000" />
+      <workItem from="1674197539106" duration="786000" />
     </task>
     <task id="LOCAL-00001" summary="Feature 2 - datetimepicker 추가">
       <created>1674032826651</created>
@@ -240,28 +294,77 @@
       <option name="project" value="LOCAL" />
       <updated>1674032826651</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Feature 2 - datetimepicker 함수 추가">
+      <created>1674060505638</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1674060505638</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Feature 2 - css">
+      <created>1674067723881</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1674067723882</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Feature 2 - 검색 페이지 css">
+      <created>1674068807701</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1674068807701</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Feature 2 - 예정날짜 기능 구현">
+      <created>1674095003613</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1674095003613</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Feature 2 - to do 편집 및 memo 기능 구현">
+      <created>1674111084928</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1674111084928</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Feature 2 - css">
+      <created>1674116229300</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1674116229300</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Feature 2 - 예정 날짜 지남 표시 기능 구현">
+      <created>1674197568595</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1674197568595</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109744000" />
+    <option name="totallyTimeSpent" value="140834000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="0" width="1936" height="1056" extended-state="0" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.13645834" />
+      <window_info content_ui="combo" id="Project" order="1" weight="0.13645834" />
       <window_info anchor="bottom" id="TODO" order="11" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
       <window_info anchor="right" id="Database" order="0" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="4" />
       <window_info anchor="bottom" id="Run" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="4" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="2" />
-      <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
@@ -270,6 +373,27 @@
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="6" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.13645834" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="11" />
+      <window_info anchor="bottom" id="Version Control" order="4" />
+      <window_info anchor="bottom" id="Run" order="7" />
+      <window_info anchor="bottom" id="Find" order="6" />
+      <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="bottom" id="Terminal" order="2" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="5" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -279,7 +403,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Feature 2 - datetimepicker 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feature 2 - datetimepicker 추가" />
+    <MESSAGE value="Feature 2 - datetimepicker 함수 추가" />
+    <MESSAGE value="Feature 2 - 검색 페이지 css" />
+    <MESSAGE value="Feature 2 - 예정날짜 기능 구현" />
+    <MESSAGE value="Feature 2 - to do 편집 및 memo 기능 구현" />
+    <MESSAGE value="Feature 2 - css" />
+    <MESSAGE value="Feature 2 - 예정 날짜 지남 표시 기능 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feature 2 - 예정 날짜 지남 표시 기능 구현" />
   </component>
   <component name="WindowStateProjectService">
     <state width="180" height="173" key="Git.Branch.Popup" />
@@ -297,27 +427,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1691">
-          <caret line="89" column="83" selection-start-line="89" selection-start-column="83" selection-end-line="89" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_8.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12996">
-          <caret line="684" column="7" selection-start-line="684" selection-start-column="7" selection-end-line="684" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DbController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
-          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -522,13 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="4" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/jquery.datetimepicker.full.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1102">
@@ -537,38 +639,66 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/planned_date.php" />
-    <entry file="file://$PROJECT_DIR$/search_list.php">
+    <entry file="file://$PROJECT_DIR$/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+        <state>
+          <caret selection-end-line="4" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todo_edit_page.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DbController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="80" column="60" lean-forward="true" selection-start-line="80" selection-start-column="60" selection-end-line="80" selection-end-column="60" />
+        <state relative-caret-position="1862">
+          <caret line="103" column="5" lean-forward="true" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/todo_update.php">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="73" column="37" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="37" />
+        <state relative-caret-position="6080">
+          <caret line="320" column="20" selection-start-line="320" selection-start-column="20" selection-end-line="320" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="15" lean-forward="true" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+        <state relative-caret-position="2033">
+          <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search_list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="119" lean-forward="true" selection-start-line="16" selection-start-column="119" selection-end-line="16" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="18" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="36" column="20" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="20" />
+        <state relative-caret-position="242">
+          <caret line="150" column="33" lean-forward="true" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todo_update.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="66" column="81" selection-start-line="66" selection-start-column="81" selection-end-line="66" selection-end-column="81" />
         </state>
       </provider>
     </entry>

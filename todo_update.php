@@ -58,14 +58,17 @@ if (isset($_GET['check'])) {
     $sucRes = ($dbconn->getDbResult('todo', 'list_id='.$list_id, 'success'));
     $sucVal = mysqli_fetch_row($sucRes);
     $sucTog = ($sucVal[0]=='0') ? true : false;
-    var_dump($sucTog);
-    $sucUpdate = $dbconn->setDbUpdate('todo', 'success='.$sucTog.', done_time=NOW()', 'list_id='.$list_id);
-    var_dump($sucUpdate);
-//    print($sucUpdate);
-
-//    header('location: index.php');
-
-
+    if ($sucTog) {
+        $sucUpdateTrue = $dbconn->setDbUpdate('todo', 'success=1, done_time=NOW()', 'list_id='.$list_id);
+//        var_dump($sucTog);
+//        var_dump($sucUpdateTrue);
+        header('location: index.php');
+    } else {
+        $sucUpdateFalse = $dbconn->setDbUpdate('todo', 'success=0, done_time=NUll', 'list_id='.$list_id);
+//        var_dump($sucTog);
+//        var_dump($sucUpdateFalse);
+        header('location: index.php');
+    }
 }
 
 

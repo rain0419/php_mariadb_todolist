@@ -144,7 +144,8 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
 <!--                                    <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">-->
                                         <p class="small mb-0"><i class="fas fa-info-circle"></i>
                                             Add <?php echo $allRow['add_time']; ?>
-                                             / Done <?php echo $allRow['done_time']; ?></p>
+                                            / Done <?php echo $allRow['done_time']; ?>
+                                        </p>
 <!--                                    </a>-->
                                 </div>
                             </li>
