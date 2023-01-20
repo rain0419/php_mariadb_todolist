@@ -73,7 +73,7 @@ $rowDone = $dbconn->getDbRows('toDo', 'success=true');
 
 
                         <?php while ($allRow = mysqli_fetch_array($allSelect)) { ?>
-                        <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
+                        <ul class="list-group list-group-horizontal rounded-0 bg-transparent" style="height: 80px;">
 <!--                            <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">-->
                             <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
                                 <div class="d-flex align-items-center form-check">

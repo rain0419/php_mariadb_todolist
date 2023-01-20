@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91b8bedb-26da-4afd-b1c5-29de44834ff1" name="Default" comment="Feature 2 - 검색 페이지 css">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="91b8bedb-26da-4afd-b1c5-29de44834ff1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo_update.php" beforeDir="false" afterPath="$PROJECT_DIR$/todo_update.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,14 +14,17 @@
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5109375">
       <split-first>
-        <splitter split-orientation="vertical" split-proportion="0.46276596">
+        <splitter split-orientation="vertical" split-proportion="0.72553194">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/index.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="242">
-                      <caret line="150" column="33" lean-forward="true" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="33" />
+                    <state relative-caret-position="-38">
+                      <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+                      <folding>
+                        <element signature="n#style#0;n#ul#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -71,8 +72,8 @@
               <file leaf-file-name="todo_update.php" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/todo_update.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="293">
-                      <caret line="66" column="81" selection-start-line="66" selection-start-column="81" selection-end-line="66" selection-end-column="81" />
+                    <state relative-caret-position="141">
+                      <caret line="58" column="40" lean-forward="true" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
                     </state>
                   </provider>
                 </entry>
@@ -92,7 +93,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
+          <file leaf-file-name="index.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="2033">
@@ -101,11 +102,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="search_list.php" pinned="false" current-in-tab="true">
+          <file leaf-file-name="search_list.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/search_list.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="304">
-                  <caret line="16" column="119" lean-forward="true" selection-start-line="16" selection-start-column="119" selection-end-line="16" selection-end-column="119" />
+                <state relative-caret-position="399">
+                  <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -175,8 +176,8 @@
         <option value="$PROJECT_DIR$/todo_edit._page.php" />
         <option value="$PROJECT_DIR$/todo_edit_page.php" />
         <option value="$PROJECT_DIR$/search_list.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/todo_update.php" />
+        <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
@@ -285,7 +286,7 @@
       <workItem from="1674115381230" duration="1749000" />
       <workItem from="1674182098818" duration="1228000" />
       <workItem from="1674195727224" duration="1784000" />
-      <workItem from="1674197539106" duration="786000" />
+      <workItem from="1674197539106" duration="1360000" />
     </task>
     <task id="LOCAL-00001" summary="Feature 2 - datetimepicker 추가">
       <created>1674032826651</created>
@@ -343,11 +344,18 @@
       <option name="project" value="LOCAL" />
       <updated>1674197568595</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Feature 2 - success check 수정">
+      <created>1674198477448</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674198477448</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140834000" />
+    <option name="totallyTimeSpent" value="141408000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -409,7 +417,8 @@
     <MESSAGE value="Feature 2 - to do 편집 및 memo 기능 구현" />
     <MESSAGE value="Feature 2 - css" />
     <MESSAGE value="Feature 2 - 예정 날짜 지남 표시 기능 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feature 2 - 예정 날짜 지남 표시 기능 구현" />
+    <MESSAGE value="Feature 2 - success check 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feature 2 - success check 수정" />
   </component>
   <component name="WindowStateProjectService">
     <state width="180" height="173" key="Git.Branch.Popup" />
@@ -667,20 +676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2033">
-          <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/search_list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="119" lean-forward="true" selection-start-line="16" selection-start-column="119" selection-end-line="16" selection-end-column="119" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -688,17 +683,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/todo_update.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="150" column="33" lean-forward="true" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="33" />
+        <state relative-caret-position="141">
+          <caret line="58" column="40" lean-forward="true" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/todo_update.php">
+    <entry file="file://$PROJECT_DIR$/search_list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="66" column="81" selection-start-line="66" selection-start-column="81" selection-end-line="66" selection-end-column="81" />
+        <state relative-caret-position="399">
+          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2033">
+          <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-38">
+          <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#ul#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
