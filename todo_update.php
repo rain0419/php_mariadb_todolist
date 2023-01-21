@@ -1,107 +1,55 @@
 <?php
-include_once 'DbController.php';
+include_once 'TodoController.php';
+// 변수에 이전페이지 정보를 저장
+$prev_page = $_SERVER['HTTP_REFERER'];
 
-// table별로 클래스 생성
-// ex.TodoController.php
-
-// select
-$allSelect = $dbconn->getDbResult('toDo', '', '*');
-//$allRow = mysqli_fetch_array($allSelect);
-
-// insert -> 클래스로 분리해서 사용 (비즈니스로직과 분리해서 초기부터 기존 것 안 건드리면서 새로운 기능 추가하기)
-if (isset($_POST['add_text']) && !empty($_POST['add_text'])) { // 라우터 기능과 클래스코드 분리하기
+// todo_text_insert
+if (isset($_POST['add_text']) && !empty($_POST['add_text'])) {
     $add_text = $_POST['add_text'];
-    $insertDb = $dbconn->setDbInsert('toDo', 'todo_text', $add_text);
-    header('location: index.php');
+    $todo_text_insert = $todo_control->setTodoInsert('todo_text', $add_text);
+    header('location:'.$prev_page);
 }
 
-// delete
+// todo_list_delete
 if (isset($_GET['del_list'])) {
     $list_id = $_GET['del_list'];
-
-    $delDb = $dbconn->setDbDelete('toDo', 'list_id='.$list_id);
-    header('location: index.php');
+    $todo_list_delete = $todo_control->setTodoDelete('list_id='.$list_id);
+    header('location:'.$prev_page);
 }
 
-// success check -> object 로 뜸 (success 의 boolean 값 출력) -> int 로 뜸 boolean 값으로 변경
-//if (isset($_GET['check'])) {
-//    $list_id = $_GET['check'];
-//    $suc = ($dbconn->getDbResult('todo', 'list_id='.$list_id, 'success'));
-/*    while($row = mysqli_fetch_array($suc)){
-        print_r($row);
-    }*/
-
-//    $success = mysqli_fetch_array($suc);
-//    $sucFal = ($success=false);
-//    $sucTog = ($sucFal ? !$sucFal: $sucFal);
-//    var_dump($suc);
-//    print($suc);
-//    var_dump($success);
-//    $done_check = $dbconn->setUpdateSuc($sucTog, $list_id);
-//    header('location: index.php');
-//}
-
-// update check true
-if (isset($_GET['check_true'])) {
-    $list_id = $_GET['check_true'];
-
-    // 쿼리 한 줄로 수정(효율성)
-    // 토글로 반전값 써줘서 하나로 합치기 (index.php의 If 절도 포함해서 총 4개 줄 -> 한 줄로 수정하기)
-    $done_check = $dbconn->setDbUpdate('toDo','success=1, done_time=NOW()', 'list_id='.$list_id);
-    header('location: index.php');
-
-}
-
-// success check -> object 로 뜸 (success 의 boolean 값 출력) -> int 로 뜸 boolean 값으로 변경
-if (isset($_GET['check'])) {
-    $list_id = $_GET['check'];
-    $sucRes = ($dbconn->getDbResult('todo', 'list_id='.$list_id, 'success'));
-    $sucVal = mysqli_fetch_row($sucRes);
-    $sucTog = ($sucVal[0]=='0') ? true : false;
-    if ($sucTog) {
-        $sucUpdateTrue = $dbconn->setDbUpdate('todo', 'success=1, done_time=NOW()', 'list_id='.$list_id);
-//        var_dump($sucTog);
-//        var_dump($sucUpdateTrue);
-        header('location: index.php');
+// todo_success_check
+if (isset($_GET['check_list_id'])) {
+    $list_id = $_GET['check_list_id'];
+    $todo_suc_col = ($todo_control->getTodoSelectColumn( 'list_id='.$list_id, 'success'));
+    $todo_suc_val = mysqli_fetch_row($todo_suc_col);
+    $suc_val = ($todo_suc_val[0]=='0') ? true : false;
+    if ($suc_val) {
+        $todo_success_check = $todo_control->setTodoUpdate('success=1, done_time=NOW()', 'list_id='.$list_id);
+        header('location:'.$prev_page);
     } else {
-        $sucUpdateFalse = $dbconn->setDbUpdate('todo', 'success=0, done_time=NUll', 'list_id='.$list_id);
-//        var_dump($sucTog);
-//        var_dump($sucUpdateFalse);
-        header('location: index.php');
+        $todo_success_uncheck = $todo_control->setTodoUpdate('success=0, done_time=NUll', 'list_id='.$list_id);
+        header('location:'.$prev_page);
     }
 }
 
-
-
-if ( isset($_GET['end_dt']) ){
-    $to_date_time = $_GET['end_dt'];
-    var_dump($to_date_time);
+// todo_planned_datetime
+if ( isset($_GET['planned_datetime']) ){
+    $date_time = $_GET['planned_datetime'];
     if (isset($_GET['list_id'])) {
         $date_list_id = $_GET['list_id'];
-        $planDateUpdate = $dbconn->setPlanTime($to_date_time, $date_list_id);
-        header('location: index.php');
+        $todo_planned_datetime = $todo_control->setTodoUpdate('planned_time=\''.$date_time.'\'', 'list_id='.$date_list_id);
+        header('location:'.$prev_page);
     }
 }
 
-
-// 메모 및 편집
-
-
-
+// todo_edit
 if ( isset($_POST['todo_text'])) {
-        $text = $_POST['todo_text'];
-        print('됨');
-//if ( isset($_POST['edit_todolist_id'])) {
+    $text = $_POST['todo_text'];
     $list_id = $_POST['edit_todolist_id'];
-        var_dump($list_id);
-//        if (isset($_POST['todo_memo'])) {
-            $memo = $_POST['todo_memo'];
-            $edit_update =  $dbconn->setDbUpdate('todo', 'todo_text="'.$text.'", memo="'.$memo.'"', 'list_id='.$list_id );
-            header('location: index.php');
-//        }
-//    }
+    $memo = $_POST['todo_memo'];
+    $todo_edit =  $todo_control->setTodoUpdate('todo_text="'.$text.'", memo="'.$memo.'"', 'list_id='.$list_id );
+//    header('location:'.$prev_page);
+    header('location: index.php');
 }
-
-
 
 ?>

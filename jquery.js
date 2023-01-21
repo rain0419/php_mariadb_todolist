@@ -1,5 +1,5 @@
-jQeury('#datetimepicker3').datetimepicker({
-    format:'d.m.Y H:i',
-    inline:true,
-    lang:'ru'
+$(function() {
+    $(".datetimepicker").datetimepicker({
+        format: "Y-m-d H:i:s",
+    });
 });
