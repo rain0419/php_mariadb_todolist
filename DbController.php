@@ -29,7 +29,7 @@ class DbController
     }
 
     // DB connect method(외부에서 접근불가)
-    private function connectDB() {
+    protected function connectDB() {
         $dbconn = mysqli_connect($this->db_host, $this->db_user, $this->db_password, $this->db_name);
         mysqli_set_charset($dbconn, "utf8");
         if (mysqli_connect_errno()) {
@@ -38,6 +38,17 @@ class DbController
         } else {
             return $dbconn;
         }
+    }
+
+    // get method
+    // 검색조건을 입력시 SQL Injection 필터링 함수를 한번 거쳐서 where 조건문에서 해킹 방지를 해주는 것
+    // 방지 로직 넣기
+    function getSqlFilter($str) {
+        // 해킹 공격을 대비하기 위한 코드
+        $str = preg_replace("/\s{1,}1\=(.*)+/","",$str); // 공백이후 1=1이 있을 경우 제거
+        $str = preg_replace("/\s{1,}(or|and|null|where|limit)/i"," ",$str); // 공백이후 or, and 등이 있을 경우 제거
+        $str = preg_replace("/[\s\t\'\;\=]+/","", $str); // 공백이나 탭 제거, 특수문자 제거
+        return $str;
     }
 
 } // end dbClass

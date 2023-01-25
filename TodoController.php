@@ -6,16 +6,13 @@
  * Time: 오후 4:30
  */
 require_once 'DbController.php';
-// 상속 a is b 일때
+// 상속은 a is b 일때!
+// 상속말고 그냥 사용으로 바꾸기
+//class TodoController
+
 class TodoController extends DbController
 {
     // get method
-    // 검색조건을 입력시 SQL Injection 필터링 함수를 한번 거쳐서 where 조건문에서 해킹 방지를 해주는 것
-    // 방지 로직 넣기
-    function getSqlFilter($sql) {
-        return $sql;
-    }
-
     function getTodoList($where, $column) {
         $result = mysqli_query($this->db, 'SELECT '.$column.' FROM  todo'.($where?' WHERE '.$this->getSqlFilter($where):'').' ORDER BY success DESC, todo_id DESC');
         return $result;
