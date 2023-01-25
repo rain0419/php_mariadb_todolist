@@ -30,7 +30,7 @@ class TodoController extends DbController
         }
     }
 
-    // set method      create update delete     set  파라미터 받을 것을 어딘가에 할당할 때 쓰는 것
+    // set method      create update delete
     function create($set_key, $set_val) {
         return mysqli_query($this->db, "INSERT INTO todo SET {$set_key} = '{$set_val}' ");
     }
