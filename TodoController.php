@@ -26,7 +26,7 @@ class TodoController extends DbController
             $rows = mysqli_fetch_row($result);
             return $rows[0]?$rows[0]:0;
         }
-    } // 필용 없
+    }
 
     // set method
     function setTodoInsert($set_key, $set_val) {
@@ -38,7 +38,7 @@ class TodoController extends DbController
     }
 
     function setTodoDelete($where)    {
-        return mysqli_query($this->db,"DELETE FROM todo ".($where?' where '.$this->getSqlFilter($where):''));
+        return mysqli_query($this->db,"DELETE FROM todo ".($where?' WHERE '.$this->getSqlFilter($where):''));
     }
 
 } // end TodoController class

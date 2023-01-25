@@ -27,7 +27,7 @@ if (isset($_GET['check_list_id'])) {
         $todo_success_check = $todo_control->setTodoUpdate('success=1, done_time=NOW()', 'list_id='.$list_id);
         header('location:'.$prev_page);
     } else {
-        $todo_success_uncheck = $todo_control->setTodoUpdate('success=0, done_time=NUll', 'list_id='.$list_id);
+        $todo_success_uncheck = $todo_control->setTodoUpdate('success=0, done_time=NULL', 'list_id='.$list_id);
         header('location:'.$prev_page);
     }
 }
