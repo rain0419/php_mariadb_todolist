@@ -39,7 +39,7 @@ $todo_done_count = $todo_all_count-$todo_should_count;
 
                         <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
                             <p class="small mb-0 ms-4 me-2 text-muted">Search</p>
-                            <form action="search_list_page.php.php" method="get">
+                            <form action="search_list_page.php" method="get">
                                 <input class="bg-light border-light rounded-pill form-control-sm" type="text" name="search" placeholder="검색하세요" required>
                                 <button type="submit" name="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
                             </form>
