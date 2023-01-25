@@ -17,7 +17,7 @@ class TodoController extends DbController
     }
 
     function getTodoList($where, $column) {
-        $result = mysqli_query($this->db, 'SELECT '.$column.' FROM  todo'.($where?' WHERE '.$this->getSqlFilter($where):''));
+        $result = mysqli_query($this->db, 'SELECT '.$column.' FROM  todo'.($where?' WHERE '.$this->getSqlFilter($where):'').' ORDER BY success DESC, todo_id DESC');
         return $result;
     }
 
