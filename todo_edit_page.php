@@ -1,9 +1,10 @@
 <?php
 include_once 'TodoController.php';
-
+// post get 말고 put - restfull api 공부
+// 모달창으로 바꾸기
 if ( isset($_GET['edit_list'])){
     $edit_list_id = $_GET['edit_list'];
-    $edit_todo_select = $todo_control->getTodoSelectColumn('list_id='.$edit_list_id,'*');
+    $edit_todo_select = $todo_control->getTodoList('list_id='.$edit_list_id,'*');
     $edit_todo = mysqli_fetch_array($edit_todo_select);
 }
 ?>

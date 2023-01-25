@@ -6,20 +6,22 @@
  * Time: 오후 4:30
  */
 require_once 'DbController.php';
-
+// 상속 a is b 일때
 class TodoController extends DbController
 {
     // get method
     // 검색조건을 입력시 SQL Injection 필터링 함수를 한번 거쳐서 where 조건문에서 해킹 방지를 해주는 것
+    // 방지 로직 넣기
     function getSqlFilter($sql) {
         return $sql;
     }
 
-    function getTodoSelectColumn($where, $column) {
+    function getTodoList($where, $column) {
         $result = mysqli_query($this->db, 'SELECT '.$column.' FROM  todo'.($where?' WHERE '.$this->getSqlFilter($where):''));
         return $result;
     }
 
+    // 페이징이 없으므로 의미없음
     function getTodoRowsCount($where){
         $sql = 'SELECT COUNT(*) FROM todo '.($where?' WHERE '.$this->getSqlFilter($where):'');
         if($result = mysqli_query($this->db, $sql)){
@@ -28,16 +30,16 @@ class TodoController extends DbController
         }
     }
 
-    // set method
-    function setTodoInsert($set_key, $set_val) {
+    // set method      create update delete     set  파라미터 받을 것을 어딘가에 할당할 때 쓰는 것
+    function create($set_key, $set_val) {
         return mysqli_query($this->db, "INSERT INTO todo SET {$set_key} = '{$set_val}' ");
     }
 
-    function setTodoUpdate($set, $where) {
+    function update($set, $where) {
         return mysqli_query($this->db, "UPDATE todo SET {$set}".($where?' WHERE '.$this->getSqlFilter($where):''));
     }
 
-    function setTodoDelete($where)    {
+    function delete($where)    {
         return mysqli_query($this->db,"DELETE FROM todo ".($where?' WHERE '.$this->getSqlFilter($where):''));
     }
 

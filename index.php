@@ -1,7 +1,7 @@
 <?php
 include_once 'TodoController.php';
 // select
-$todo_all_select = $todo_control->getTodoSelectColumn('', '*');
+$todo_all_select = $todo_control->getTodoList('', '*');
 
 $todo_all_count = $todo_control->getTodoRowsCount('');
 $todo_should_count = $todo_control->getTodoRowsCount('success=false');

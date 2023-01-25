@@ -4,9 +4,9 @@ include_once 'TodoController.php';
 if ( isset($_GET['search']) )
 $search_text = $_GET['search'];
 $where = 'todo_text LIKE \'%'.$search_text.'%\'';
-$todo_search = ($todo_control->getTodoSelectColumn($where, '*'));
+$todo_search = ($todo_control->getTodoList($where, '*'));
 $todo_search_count = $todo_control->getTodoRowsCount($where);
-
+// 카운트 쿼리의미 없음 페이징 관련 공부 io 작업(성능 올리기위해 제일 중요한 작업) io 줄이기
 ?>
 <html>
 <?php include_once 'head.php'; ?>
@@ -27,7 +27,7 @@ $todo_search_count = $todo_control->getTodoRowsCount($where);
 
                         <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
                             <p class="small mb-0 ms-4 me-2 text-muted">Search</p>
-                            <form action="search_list.php" method="get">
+                            <form action="search_list_page.php" method="get">
                                 <input class="bg-light border-light rounded-pill form-control-sm" type="text" name="search" placeholder="검색하세요" required>
                                 <button type="submit" name="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
                             </form>
