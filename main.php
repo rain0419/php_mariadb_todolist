@@ -1,54 +1,82 @@
 <?php
 include_once 'TodoController.php';
+
+/*
+// DB 연결
+//if(!$dbconn) $dbconn->connectDB();
+// 멤버정보 구하기
+$member_id = $_SESSION['member_id'];
+$member_data = $member_control->getMemberList("member_id='".$member_id."'", "");
+
+// 글쓴이 정보
+$member_data = $member
+$data=mysql_fetch_array(mysql_query("select no, board_no, user_id,name, member_no, board_id ,board_name ,back_img   from member_board  where board_id='$id'"));
+
+$member_data[no] = stripslashes($member_data[no]);
+$member_data[name] = stripslashes($member_data[name]);
+$member_data[user_id] = stripslashes($member_data[user_id]);
+
+
+$data2=mysql_fetch_array(mysql_query("select * from $member_table where user_id='$id' ||  no='$member_no'"));
+
+// $data 가 없을때, 즉 탈퇴한 회원인경우 표시
+if(!$data[no]) Error("해당글을 찾을 수 없습니다");
+*/
+
+
 // select
 $todo_all_select = $todo_control->getTodoList('', '*');
 
 $todo_all_count = $todo_control->getTodoRowsCount('');
 $todo_should_count = $todo_control->getTodoRowsCount('success=false');
 $todo_done_count = $todo_all_count-$todo_should_count;
+
+//$result->num_rows
+//위처럼 하면, 쿼리의 결과로 넘어온 행의 갯수를 알수 있습니다.
 ?>
 <html>
 <?php include_once 'head.php'; ?>
 <body>
-    <div class="container py-5">
-        <div class="row d-flex">
-            <div class="col">
-                <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
-                    <div class="card-body py-4 px-4 px-md-5">
-                        <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">To Do List</p>
-                        <ul>
-                            <li><?= $todo_all_count, "개의 할 일 작성<br>"; ?></li>
-                            <li><?= $todo_done_count, "개 완료함<br>"; ?></li>
-                            <li><?= $todo_should_count, "개 해야함<br>"; ?></li>
-                        </ul>
+<div class="container py-5">
+    <div class="row d-flex">
+        <div class="col">
+            <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
+                <div class="card-body py-4 px-4 px-md-5">
+                    <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">To Do List</p>
+                    <p onclick="logout()">로그아웃</p>
+                    <ul>
+                        <li><?= $todo_all_count, "개의 할 일 작성<br>"; ?></li>
+                        <li><?= $todo_done_count, "개 완료함<br>"; ?></li>
+                        <li><?= $todo_should_count, "개 해야함<br>"; ?></li>
+                    </ul>
 
-                        <div class="pb-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <form action="todo_update.php" method="post" class="d-flex flex-row align-items-center">
-                                        <input type="text" class="form-control form-control-lg me-3" id="exampleFormControlInput1" name="add_text" placeholder="할 일을 입력하세요." required>
-                                        <button type="submit" name="submit" class="btn btn-primary">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                    </form>
-                                </div>
+                    <div class="pb-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="todo_update.php" method="post" class="d-flex flex-row align-items-center">
+                                    <input type="text" class="form-control form-control-lg me-3" id="exampleFormControlInput1" name="add_text" placeholder="할 일을 입력하세요." required>
+                                    <button type="submit" name="submit" class="btn btn-primary">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </form>
                             </div>
                         </div>
+                    </div>
 
-                        <hr class="my-4">
+                    <hr class="my-4">
 
-                        <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
-                            <p class="small mb-0 ms-4 me-2 text-muted">Search</p>
-                            <form action="search_list_page.php" method="get">
-                                <input class="bg-light border-light rounded-pill form-control-sm" type="text" name="search" placeholder="검색하세요" required>
-                                <button type="submit" name="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
-                            </form>
-                        </div>
+                    <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
+                        <p class="small mb-0 ms-4 me-2 text-muted">Search</p>
+                        <form action="search_list_page.php" method="get">
+                            <input class="bg-light border-light rounded-pill form-control-sm" type="text" name="search" placeholder="검색하세요" required>
+                            <button type="submit" name="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
 
 
-                        <?php while ($todo_all_row = mysqli_fetch_array($todo_all_select)) { ?>
+                    <?php while ($todo_all_row = mysqli_fetch_array($todo_all_select)) { ?>
                         <ul class="list-group list-group-horizontal rounded-0 bg-transparent" style="height: 80px;">
-<!--                            <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">-->
+                            <!--                            <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">-->
                             <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
                                 <div class="d-flex align-items-center form-check">
                                     <a id="cheBtn" href="todo_update.php?check_todo_idx=<?php echo $todo_all_row['todo_idx'] ?>">
@@ -74,7 +102,7 @@ $todo_done_count = $todo_all_count-$todo_should_count;
                                     </div>
                                 </div>
                             </li>
-<!--                            예상 날짜 입력란 -->
+                            <!--                            예상 날짜 입력란 -->
                             <li class="list-group-item d-flex align-items-center border-0 bg-transparent">
                                 <div class="d-flex align-items-center">
                                     <?php
@@ -94,21 +122,21 @@ $todo_done_count = $todo_all_count-$todo_should_count;
                                         <p></p>
                                     <?php } ?>
                                     <p class="small mb-0">
-                                        <form class="d-grid gap-2 d-md-flex justify-content-md-end" action="todo_update.php">
-                                                <input type='text' class='d-none' name='todo_idx' value='<?php echo $todo_all_row['todo_idx'] ?>'>
-                                                <input type='text' class='bg-light border-light datetimepicker end_dt form-control-sm' name='planned_datetime' required style="width: 140px;">
-                                                <button class="btn btn-warning inline" type="submit" name="submit"><i class="text-white fas fa-calendar-check"></i></button>
-                                        </form>
+                                    <form class="d-grid gap-2 d-md-flex justify-content-md-end" action="todo_update.php">
+                                        <input type='text' class='d-none' name='todo_idx' value='<?php echo $todo_all_row['todo_idx'] ?>'>
+                                        <input type='text' class='bg-light border-light datetimepicker end_dt form-control-sm' name='planned_datetime' required style="width: 140px;">
+                                        <button class="btn btn-warning inline" type="submit" name="submit"><i class="text-white fas fa-calendar-check"></i></button>
+                                    </form>
                                     </p>
                                 </div>
                             </li>
-<!--                            메모 및 편집, 삭제, 날짜시간 출력 -->
+                            <!--                            메모 및 편집, 삭제, 날짜시간 출력 -->
                             <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
                                 <div class="d-flex flex-row justify-content-end">
                                     <?php if ($todo_all_row['success']) { ?>
-                                    <p class="text-info" title="Edit todo"><i class="text-body-tertiary fas fa-pencil-alt me-3"></i></p>
+                                        <p class="text-info" title="Edit todo"><i class="text-body-tertiary fas fa-pencil-alt me-3"></i></p>
                                     <?php } else { ?>
-                                    <a href="todo_edit_page.php?edit_list=<?php echo $todo_all_row['todo_idx'] ?>" class="text-info" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
+                                        <a href="todo_edit_page.php?edit_list=<?php echo $todo_all_row['todo_idx'] ?>" class="text-info" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
                                     <?php } ?>
                                     <a href="todo_update.php?del_list=<?php echo $todo_all_row['todo_idx'] ?>" class="text-danger"title="Delete todo"><i class="fas fa-trash-alt"></i></a>
                                 </div>
@@ -121,17 +149,21 @@ $todo_done_count = $todo_all_count-$todo_should_count;
                             </li>
 
                         </ul>
-                        <?php } ?>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
 
 
 <script type="text/javascript">
-
-
+    function logout() {
+        const data = confirm("로그아웃 하시겠습니까?");
+        if (data) {
+            location.href = "./member/logout_check.php";
+        }
+    }
 </script>

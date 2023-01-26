@@ -16,7 +16,7 @@ $todo_search_count = $todo_control->getTodoRowsCount($where);
             <div class="col">
                 <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
                     <div class="card-body py-4 px-4 px-md-5">
-                        <a href="index.php" class="fs-2 text mt-3 mb-4 pb-3 text-primary">
+                        <a href="main.php" class="fs-2 text mt-3 mb-4 pb-3 text-primary">
                             <i class="fas fa-home"></i>
                         </a>
                         <div class="h1 text-center pb-2">
@@ -38,7 +38,7 @@ $todo_search_count = $todo_control->getTodoRowsCount($where);
                             <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
                                 <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
                                     <div class="d-flex align-items-center form-check">
-                                        <a id="cheBtn" href="todo_update.php?check_todo_id=<?php echo $todo_search_row['todo_id'] ?>">
+                                        <a id="cheBtn" href="todo_update.php?check_todo_idx=<?php echo $todo_search_row['todo_idx'] ?>">
                                             <?php if ($todo_search_row['success']) { ?>
                                                 <i class="fas fa-check-square"></i>
                                             <?php } else { ?>
@@ -82,7 +82,7 @@ $todo_search_count = $todo_control->getTodoRowsCount($where);
                                         <?php } ?>
                                         <p class="small mb-0">
                                         <form class="d-grid gap-2 d-md-flex justify-content-md-end" action="todo_update.php">
-                                            <input type='text' class='d-none' name='todo_id' value='<?php echo $todo_search_row['todo_id'] ?>'>
+                                            <input type='text' class='d-none' name='todo_idx' value='<?php echo $todo_search_row['todo_idx'] ?>'>
                                             <input type='text' class='bg-light border-light datetimepicker end_dt form-control-sm' name='planned_datetime' required style="width: 140px;">
                                             <button class="btn btn-warning inline" type="submit" name="submit"><i class="text-white fas fa-calendar-check"></i></button>
                                         </form>
@@ -95,9 +95,9 @@ $todo_search_count = $todo_control->getTodoRowsCount($where);
                                         <?php if ($todo_search_row['success']) { ?>
                                             <p class="text-info" title="Edit todo"><i class="text-body-tertiary fas fa-pencil-alt me-3"></i></p>
                                         <?php } else { ?>
-                                            <a href="todo_edit_page.php?edit_list=<?php echo $todo_search_row['todo_id'] ?>" class="text-info" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
+                                            <a href="todo_edit_page.php?edit_list=<?php echo $todo_search_row['todo_idx'] ?>" class="text-info" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
                                         <?php } ?>
-                                        <a href="todo_update.php?del_list=<?php echo $todo_search_row['todo_id'] ?>" class="text-danger"title="Delete todo"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="todo_update.php?del_list=<?php echo $todo_search_row['todo_idx'] ?>" class="text-danger"title="Delete todo"><i class="fas fa-trash-alt"></i></a>
                                     </div>
                                     <div class="text-end text-muted ">
                                         <p class="small mb-0"><i class="fas fa-info-circle"></i>

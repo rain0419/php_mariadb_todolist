@@ -5,13 +5,13 @@
  * Date: 2023-01-25
  * Time: 오후 6:15
  */
-require_once 'DbController.php';
+require_once '../DbController.php';
 
 class MemberController extends DbController
 {
     // get method
     function getMemberList($where, $column) {
-        $result = mysqli_query($this->db, 'SELECT '.$column.' FROM name'.($where?' WHERE '.$this->getSqlFilter($where):'').' ORDER BY success DESC, todo_id DESC');
+        $result = mysqli_query($this->db, 'SELECT '.$column.' FROM member'.($where?' WHERE '.$this->getSqlFilter($where):''));
         return $result;
     }
 

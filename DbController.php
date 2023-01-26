@@ -45,9 +45,9 @@ class DbController
     // 방지 로직 넣기
     function getSqlFilter($str) {
         // 해킹 공격을 대비하기 위한 코드
-        $str = preg_replace("/\s{1,}1\=(.*)+/","",$str); // 공백이후 1=1이 있을 경우 제거
-        $str = preg_replace("/\s{1,}(or|and|null|where|limit)/i"," ",$str); // 공백이후 or, and 등이 있을 경우 제거
-        $str = preg_replace("/[\s\t\'\;\=]+/","", $str); // 공백이나 탭 제거, 특수문자 제거
+//        $str = preg_replace("/\s{1,}1\=(.*)+/","",$str); // 공백이후 1=1이 있을 경우 제거
+//        $str = preg_replace("/\s{1,}(or|and|null|where|limit)/i"," ",$str); // 공백이후 or, and 등이 있을 경우 제거
+//        $str = preg_replace("/[\s\t\'\;\=]+/","", $str); // 공백이나 탭 제거, 특수문자 제거
         return $str;
     }
 
